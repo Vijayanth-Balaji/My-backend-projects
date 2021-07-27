@@ -1,0 +1,38 @@
+body{
+    background: #F1BF12;
+
+}
+
+
+#white-box{
+    background: #fff !important;
+    height: 30%;
+    width:20%;
+    padding:50px 50px;
+    text-align: center;
+    transform: translate(125%,60%);
+    border-radius: 20px;
+    position: fixed;
+}
+
+#white-box h3{
+    padding:0px 0 10px;
+    font-family: 'Dancing Script', cursive;
+}
+
+#white-box a{
+    text-decoration: none;
+    padding:10px 20px;
+    color:#fff;
+    border-radius: 5px;
+}
+
+#button1{
+    background: orange;
+
+}
+#button2{
+    background: blue;
+}
+
+

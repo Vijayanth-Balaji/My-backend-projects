@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .democlass {
+            width: 50%;
+            text-align: center;
+            background-color: rgb(215, 172, 228);
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="mb-3" style="width:50%; border: 2px solid black; padding:10px;">
+            <label for="exampleFormControlInput1" class="form-label">Enter your UserID</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" style="margin-bottom: 10px;" placeholder="User ID should be from 1-10">
+            <button type="button" class="btn btn-primary" onclick="clicked()">Submit</button>
+        </div>
+        <div id="mainContent">
+        </div>
+    </center>
+</body>
+<script>
+    const clicked = async () => {
+        var inp = document.getElementById("exampleFormControlInput1").value;
+        var main = document.getElementById("mainContent")
+        console.log(inp);
+        const api = "https://jsonplaceholder.typicode.com/posts";
+        let data = await fetch(api);
+        realData = await data.json();
+        for (let i = 0; i < realData.length; i++) {
+            if (realData[i].userId == inp) {
+                // console.log(realData[i])
+                var attr = document.createAttribute("class");
+                attr.value = "democlass";
+                let div = document.createElement("div")
+                div.setAttributeNode(attr);
+                let h16 = document.createElement("h6")
+                let h26 = document.createElement("h6")
+                let h36 = document.createElement("h6")
+                let h46 = document.createElement("h6")
+                h16.textContent = realData[i].title
+                h26.textContent = realData[i].body
+                h36.textContent = `User ID: ${realData[i].userId}`
+                h46.textContent = `Post ID: ${realData[i].id}`
+                div.appendChild(h36)
+                div.appendChild(h46)
+                div.appendChild(h16)
+                div.appendChild(h26)
+                main.appendChild(div)
+            }
+        }
+
+    }
+</script>

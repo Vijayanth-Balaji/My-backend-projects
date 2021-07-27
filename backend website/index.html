@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Yellowtail&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    <div id="white-box">
+
+        <h3 id="quotes1">We Read The World wrong and say That It Deceives Us</h3>
+
+        <h3 id="author">By Rabindranath Tagore</h3>
+    
+        <a href="" id="button1" onclick="getnewquotes()">New Quotes</a>
+        
+        <a href="" id="button2" onclick="tweet()">Tweet Me</a>
+    
+    </div>
+    
+
+    <script>
+
+      var quote =  document.getElementById("quotes1")
+      var author =   document.getElementById("author")
+    
+        var JSON1
+
+        var quotes
+
+        const tweet = ()=>{
+            var facebook = ` https://twitter.com/intent/tweet?text=${quotes.text} \n By ${quotes.author} `
+            window.open(facebook)
+        }
+
+        const getnewquotes = ()=>{
+            var random = Math.floor(Math.random()*1643)
+
+            quotes = JSON1[random]
+
+            if(quotes.author == null){
+                author.innerHTML = "By Anonymous"
+            }
+
+            else{
+                author.innerHTML = quotes.author
+            }
+
+            quote.innerHTML = quotes.text
+           
+        }
+
+        const getquotes = async()=>{
+            try{
+                const api = "https://type.fit/api/quotes"
+                var data = await fetch(api)
+
+                JSON1 =await data.json()
+
+                // console.log(data)
+
+                // console.log(JSON1)
+                getnewquotes();
+
+            }
+
+            catch(e){
+
+            }
+
+
+
+        }
+
+        getquotes();
+
+        console.log(random)
+
+   
+        
+    </script>
+
+</body>
+</html>

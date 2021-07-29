@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+      <nav>
+          <img src="img/logo.png" class="logo">
+          <form action="">
+              <input type="text" placeholder="Search for items" id="search">
+          </form>
+          <div class="icons">
+              <img src="img/search.png" onclick="myfunction()">
+              <img src="img/cart.png" alt="">
+              <img src="img/menu.png" alt="">
+          </div>
+      </nav>
+      <div class="row">
+          <div class="col-1">
+              <h1>NIKE<br>SPORTS AIR</h1>
+              <p>The Nike Air Zoom Vomero 15 Is Back Upfated Cushioning<br>And A Tough Outstole For Traction.</p>
+              <h2>$150</h2>
+              <button>Add to cart</button>
+
+          </div>
+
+          <div class="col-2">
+              <div class="feature">
+                  <img src="img/nike.png" id="ProductImg">
+              </div>
+              <div class="small-img-row">
+                  <div class="small-img">
+                      <img src="img/nike.png" class="small-img1">
+                  </div>
+                  <div class="small-img">
+                    <img src="img/nike-s.png" class="small-img1">
+                </div>
+                <div class="small-img">
+                    <img src="img/nike-b.png" class="small-img1">
+                </div>
+                <div class="small-img">
+                    <img src="img/nike-g.png" class="small-img1">
+                </div>
+              </div>
+              <h2>NIKE</h2>
+          </div>
+      </div>
+  </div>
+
+  <script>
+      var Product = document.getElementById("ProductImg")
+      var smallimg = document.getElementsByClassName("small-img1")
+      var background = document.getElementsByClassName("col-2")
+
+      function myfunction(){
+          document.getElementById("search").style.display = "block"
+      }
+
+      function animation(){
+          Product.classList.add("zoom");
+          setTimeout(function(){
+              Product.classList.remove("zoom")
+          },500);
+      }
+      smallimg[0].onclick = function(){
+          Product.src = smallimg[0].src;
+          animation()
+      }
+      smallimg[1].onclick = function(){
+          Product.src = smallimg[1].src;
+          animation()
+      }
+      smallimg[2].onclick = function(){
+          Product.src = smallimg[2].src;
+          animation()
+      }
+      smallimg[3].onclick = function(){
+          Product.src = smallimg[3].src;
+          animation()
+      }
+  </script>
+</body>
+</html>
